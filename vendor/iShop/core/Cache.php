@@ -25,7 +25,6 @@ class Cache extends Singleton
             )) {
                 return true;
             }
-            return false;
         }
         return false;
     }
@@ -45,7 +44,6 @@ class Cache extends Singleton
                 return $content;
             }
             unlink($file);
-            return null;
         }
         return null;
     }

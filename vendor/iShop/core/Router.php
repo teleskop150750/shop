@@ -64,7 +64,7 @@ class Router
                 . 'Controller';
             if (class_exists($controller)) {
                 $controllerObject = new $controller(self::$route);
-                $action = self::lowerCamelCase(self::$route['action']) . 'Action';
+                $action = self::$route['action'] . 'Action';
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
                     $controllerObject->getView();
@@ -114,6 +114,7 @@ class Router
                     $route['prefix'] .= '\\';
                 }
 
+                $route['action'] = self::lowerCamelCase($route['action']);
                 $route['controller'] = self::upperCamelCase($route['controller']);
                 self::$route = $route;
 //                debug(self::$route, 'route');

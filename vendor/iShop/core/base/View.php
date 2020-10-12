@@ -13,9 +13,9 @@ class View
     protected string $model = '';
     protected string $view = '';
     protected string $prefix = '';
-    public ?string $layout = '';
+    protected ?string $layout = '';
     protected array $data = [];
-    public array $meta = [
+    protected array $meta = [
         'title' => '',
         'description' => '',
         'keywords' => '',
@@ -66,7 +66,11 @@ class View
         }
     }
 
-    public function getMeta()
+    /**
+     * получить мета
+     * @return string
+     */
+    public function getMeta(): string
     {
         return '<title>' . $this->meta['title'] . '</title>' . PHP_EOL
             . '<meta name="description" content"' . $this->meta['description'] . '">' . PHP_EOL

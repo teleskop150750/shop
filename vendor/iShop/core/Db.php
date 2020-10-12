@@ -19,7 +19,13 @@ class Db extends Singleton
         if (!R::testConnection()) {
             throw new Exception('Нет соединения с БД', 500);
         }
+        /**
+         * запретить изменять бд автоматически
+         */
         R::freeze(true);
+        /**
+         * режим отладки
+         */
         if (DEBUG){
             R::debug(true, 1);
         }

@@ -10,7 +10,7 @@ class App
 
     public function __construct()
     {
-        $query = trim($_SERVER['QUERY_STRING'], '/');
+        $query = rtrim($_SERVER['QUERY_STRING'], '/');
         session_start();
 //        debug($query, 'строка запроса');
         self::$app = Registry::getInstance();

@@ -11,9 +11,9 @@ abstract class Controller
     protected string $model = '';
     protected string $view = '';
     protected string $prefix = '';
-    public ?string $layout = '';
+    protected ?string $layout = '';
     protected array $data = [];
-    public array $meta = [
+    protected array $meta = [
         'title' => '',
         'description' => '',
         'keywords' => '',
@@ -28,7 +28,11 @@ abstract class Controller
         $this->prefix = $route['prefix'];
     }
 
-    public function getView()
+    /**
+     * получить вид
+     * @throws \Exception
+     */
+    public function getView(): void
     {
         // var_dump($this->layout);
         $viewObject = new View($this->route, $this->layout, $this->view, $this->meta);
@@ -50,10 +54,10 @@ abstract class Controller
      * @param string $desc
      * @param string $keywords
      */
-    protected function setMeta(string $title = '', string $desc = '', $keywords = '')
+    protected function setMeta(string $title = '', string $description = '', $keywords = '')
     {
         $this->meta['title'] = $title;
-        $this->meta['description'] = $desc;
+        $this->meta['description'] = $description;
         $this->meta['keywords'] = $keywords;
     }
 }
